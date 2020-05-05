@@ -1,0 +1,102 @@
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+      <div class="header-body">
+        <div class="row align-items-center py-4">
+          <div class="col-lg-6 col-7">
+            <h6 class="h2 text-white d-inline-block mb-0">OneWater Blogs</h6>
+
+          </div>
+          <div class="col-lg-6 col-5 text-right dropdown" >
+            <a href="#" class="btn btn-sm btn-neutral" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-filter" aria-hidden="true"></i>
+              Filters</a>
+            <div class="dropdown-menu  dropdown-menu-right ">
+              <a (click)="showAllBlogs()" class="dropdown-item">
+                <i class="ni ni-bullet-list-67 text-dark" ></i>
+                <span>All Blogs</span>
+              </a>
+              <a (click)="showApprovedBlogs()" class="dropdown-item">
+                <i class="ni ni-check-bold text-success"></i>
+                <span>Approved</span>
+              </a>
+              <a (click)="showPendingBlogs()" class="dropdown-item">
+                <i class="fa fa-clock-o text-warning" aria-hidden="true"></i>
+                <span>Pending</span>
+              </a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Page content -->
+  <div class="container-fluid mt--6">
+    <div class="row justify-content-center">
+      <div class="col">
+        <div class="card">
+          <div class="card-header bg-transparent">
+            <h3 class="mb-0">{{blogsType | titlecase}} Blogs</h3>
+          </div>
+          <div class="card-body">
+           <div class="row">
+             <div class="col-lg-4 col-md-6" *ngFor="let blog of blogstoDisplay">
+              <div class="card">
+                <div class="blog-options" *ngIf="blog?.status == 'approved'">
+                  <div class="text-right">
+                    <div class="dropdown">
+                      <!-- <button type="button" class="btn btn-dribbble btn-icon-only rounded-circle">
+                        <span class="btn-inner--icon"><i class="fab fa-dribbble"></i></span>
+                      </button> -->
+                      <a class="btn btn-sm btn-secondary rounded-circle" title="More Options" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-ellipsis-v"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                        <a class="dropdown-item text-danger" *ngIf="blog?.status == 'approved'" (click)="deleteApproveBlog(blog._id,blog.approved_id, blog.author_id)">
+                          <i class="fa fa-trash-o" aria-hidden="true"></i>
+                          Delete</a>
+                          <a class="dropdown-item text-danger" *ngIf="blog?.status == 'pending'" (click)="deleteUnApproveBlog(blog._id,blog.unapproved_id)" >
+                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                            Delete</a>
+                        <a class="dropdown-item text-primary" >
+                          <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                          Move to Admin Blogs</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Card image -->
+                <img class="card-img-top" [src]=blog.image alt="Image placeholder">
+
+                <!-- Card body -->
+                <div class="card-body">
+                  <h5 class="h2 card-title my-0 text-bold">{{blog?.title}} </h5>
+                  <div class="d-flex justify-content-between mt-2">
+                    <small class="text-muted">by <strong class="text-dark">{{blog?.author_name}}</strong></small>
+                    <small class="text-muted">{{blog?.date_added | date:'MMMM d, y'}}</small>
+                  </div>
+
+                  <!-- <p class="card-text mt-4">Argon is a great free UI package based on Bootstrap 4 that includes the most important components and features.</p> -->
+                  <hr class="my-3">
+                  <div class="d-flex justify-content-between">
+                    <div class="status">
+                      <span class="btn btn-sm btn-outline-warning" *ngIf="blog?.status == 'pending'">
+                        Pending
+                      </span>
+                      <span class="btn btn-sm btn-outline-success" *ngIf="blog?.status == 'approved'">
+                        Approved
+                      </span>
+                    </div>
+                    <a [routerLink]="['/view-blog',blog._id]" class="btn btn-sm btn-primary">View Blog</a>
+                  </div>
+
+                </div>
+              </div>
+             </div>
+           </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

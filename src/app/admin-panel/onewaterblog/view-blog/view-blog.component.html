@@ -1,0 +1,140 @@
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+      <div class="header-body">
+        <div class="row align-items-center py-4">
+          <div class="col-lg-6 col-7">
+            <h6 class="h2 text-white d-inline-block mb-0">Single Blog View</h6>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Page content -->
+  <div class="container-fluid mt--6">
+    <div class="row justify-content-center">
+      <div class="col">
+        <div class="card">
+          <div class="card-header bg-transparent d-flex align-items-center">
+            <h3 class="mb-0">{{blog?.title}}</h3>
+            <div *ngIf="blog?.status != 'approved'" class="text-right ml-auto">
+              <button type="button" class="btn btn-sm btn-primary btn-icon" data-toggle="modal" data-target="#approveForm" >
+                <span class="btn-inner--icon"><i class="fa fa-check" aria-hidden="true"></i>
+                </span>
+                <span class="btn-inner--text">Approve</span>
+              </button>
+              <button (click)="reject(blog.unapproved_id, blog._id)" type="button" class="btn btn-sm btn-danger btn-icon">
+                  <span class="btn-inner--icon"><i class="fa fa-trash" aria-hidden="true"></i></span>
+                  <span class="btn-inner--text">Reject</span>
+                </button>
+            </div>
+          </div>
+          <div class="card-body" [innerHTML]="blog?.desc"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!--APPROVE BLOG MODAL-->
+    <div class="modal fade" id="approveForm" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-modal="true">
+      <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+          <div class="modal-body p-0">
+            <div class="card bg-secondary border-0 mb-0">
+              <div class="card-body px-lg-5 py-lg-5">
+                <div class="text-center text-muted mb-4">
+                  <small>Please provide a category to the blog</small>
+                </div>
+                <form role="form">
+                  <div class="form-group">
+                      <label class="form-control-label" for="videocategory"
+                        >Blog Category</label
+                      >
+
+                      <select class="form-control" (change)="onChange($event)">
+                        <option value="">Select Category</option>
+                          <option value="water">Water</option>
+                          <option value="wastewater">Wastewater</option>
+                          <option value="stormwater">Stormwater</option>
+                          <option value="research">Innovation & Research</option>
+                          <option value="sustainable">Sustainable Development</option>
+                          <option value="mgmt">Management & Finance</option>
+                          <option value="leg">Legislative & Regulatory</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-control-label" for="videocategory"
+                      >Blog Subcategory</label
+                    >
+
+                      <select class="form-control" (change)="onChangesub($event)" id="water" *ngIf="showSubcatrgory=='water'">
+                        <option value="">Select Subcategory</option>
+                          <option value="distribution"> Distribution System</option>
+                          <option value="conservation">Water Conservation</option>
+                          <option value="drinking"> Drinking Water Quality</option>
+                          <option value="watertreatment"> Water Treatment & Operations</option>
+                          <option value="desalination">Desalination</option>
+
+                      </select>
+                      <select class="form-control" (change)="onChangesub($event)" id="wastewater" *ngIf="showSubcatrgory=='wastewater'">
+                          <option value="">Select Subcategory</option>
+                            <option value="biosolids">Biosolids</option>
+                            <option value="collection">Collection Systems</option>
+                            <option value="reuse">Water Reuse and Resource Recovery</option>
+                            <option value="odor">Odor and corrosion management</option>
+                            <option value="wastewatertreatment"> Wastewater treatment & Operations</option>
+
+                        </select>
+
+                        <select class="form-control" (change)="onChangesub($event)" id="stormwater" *ngIf="showSubcatrgory=='stormwater'">
+                            <option value="">Select Subcategory</option>
+                              <option value="watershed">Watershed</option>
+                              <option value="hydrology">Hydrology</option>
+                          </select>
+                          <select class="form-control" id="research" *ngIf="showSubcatrgory=='research'">
+                              <option value="">Select Subcategory</option>
+                                <option value="waterscience">Water Science & Research</option>
+                                <option value="students">Students</option>
+                                <option value="youngpros">Young Professionals</option>
+
+                            </select>
+                            <select class="form-control" (change)="onChangesub($event)" id="sustainable" *ngIf="showSubcatrgory=='sustainable'">
+                                <option value="">Select Subcategory</option>
+                                  <option value="climate"> Climate Change</option>
+                                  <option value="resiliency">Resiliency</option>
+                                  <option value="energy">Energy</option>
+                                  <option value="reg">Regional Activities/ Cast Studies</option>
+                              </select>
+                               <select class="form-control" (change)="onChangesub($event)" id="mgmt" *ngIf="showSubcatrgory=='mgmt'">
+                                  <option value="">Select Subcategory</option>
+                                    <option value="workforce">Workforce Development</option>
+                                    <option value="asset">Asset management</option>
+                                    <option value="util">Utility management</option>
+                                    <option value="finance">Financing</option>
+                                    <option value="cons"> Construction management</option>
+                                    <option value="leader">Leadership</option>
+                                </select>
+
+                                <select class="form-control"(change)="onChangesub($event)" id="leg" *ngIf="showSubcatrgory=='leg'">
+                                    <option value="">Select Subcategory</option>
+                                      <option value="govt">Government Affairs</option>
+                                      <option value="safety">Safety and Security</option>
+
+                                  </select>
+                  </div>
+
+                  <div class="text-center">
+                    <button type="button" class="btn btn-primary my-4"  (click)="approve(blog.unapproved_id, blog._id)">Approve Blog</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>

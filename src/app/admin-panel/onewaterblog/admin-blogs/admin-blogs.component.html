@@ -1,0 +1,57 @@
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+      <div class="header-body">
+        <div class="row align-items-center py-4">
+          <div class="col-lg-6 col-7">
+            <h6 class="h2 text-white d-inline-block mb-0">OneWater Admin Blogs</h6>
+          
+          </div>
+       
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page content -->
+  <div class="container-fluid mt--6">
+    <div class="row justify-content-center">
+      <div class="col">
+        <div class="card">
+          <!-- <div class="card-header bg-transparent">
+            <h3 class="mb-0">{{blogsType | titlecase}} Blogs</h3>
+          </div> -->
+          <div class="card-body">
+           <div class="row">
+             <div class="col-lg-4 col-md-6" *ngFor="let blog of adminBlogs">
+              <div class="card">
+               
+                
+                <!-- Card image -->
+                <img class="card-img-top" src="/assets/img/theme/img-1-1000x600.jpg" alt="Image placeholder">
+
+                <!-- Card body -->
+                <div class="card-body">
+                  <h5 class="h2 card-title my-0 text-bold">{{blog?.title}} </h5>
+                  <div class="d-flex justify-content-between mt-2">
+                    <small class="text-muted">by <strong class="text-dark">{{blog?.author}}</strong></small>
+                    <small class="text-muted">{{blog?.date}}</small>
+                  </div>
+
+                  <!-- <p class="card-text mt-4">Argon is a great free UI package based on Bootstrap 4 that includes the most important components and features.</p> -->
+                  <hr class="my-3">
+                  <div class="d-flex justify-content-between">
+                    <a (click)="removeBlog()" class="btn btn-sm btn-danger text-white">Remove Blog</a>
+                    <a [routerLink]="['/view-blog']" class="btn btn-sm btn-primary">View Blog</a>
+
+                    
+                  </div>
+                  
+                </div>
+              </div>
+             </div>
+           </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

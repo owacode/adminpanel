@@ -1,0 +1,68 @@
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+      <div class="header-body">
+        <div class="row align-items-center py-4">
+          <div class="col-lg-6 col-7">
+            <h6 class="h2 text-white d-inline-block mb-0">Uploaded Videos </h6>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Page content -->
+  <div class="container-fluid mt--6">
+    <div class="row justify-content-center">
+      <div class="col">
+        <div class="card">
+          <div class="card-header bg-transparent">
+            <h3 class="mb-0">OneWater Talks Videos</h3>
+          </div>
+          <div class="card-body">
+           <div class="row">
+             <div class="col-lg-4 col-md-6" *ngFor="let video of videos">
+              <div class="card">
+                <!-- Card image -->
+                <img class="card-img-top" [src]="video.image" alt="Image placeholder">
+
+                <!-- Card body -->
+                <div class="card-body">
+                    <div class="blog-options">
+                        <div class="text-right">
+                          <div class="dropdown">
+                            <!-- <button type="button" class="btn btn-dribbble btn-icon-only rounded-circle">
+                              <span class="btn-inner--icon"><i class="fab fa-dribbble"></i></span>
+                            </button> -->
+                            <a class="btn btn-sm btn-secondary rounded-circle" title="More Options" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <i class="fas fa-ellipsis-v"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                              <a class="dropdown-item text-danger" (click)="delete(video._id)">
+                                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                Delete Video</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  <h5 class="h2 card-title my-0 text-bold">{{video?.title}} </h5>
+                  <div class="d-flex justify-content-end mt-2">
+                    <small class="text-muted">{{video?.date_added | date:'MMMM d,y'}}</small>
+                  </div>
+
+                  <!-- <p class="card-text mt-4">Argon is a great free UI package based on Bootstrap 4 that includes the most important components and features.</p> -->
+                  <hr class="my-3">
+                  <div class="d-flex justify-content-between">
+                    <a [routerLink]="['/view-video',video._id]" class="btn btn-sm btn-primary">View more details</a>
+                    <a [href]="video?.url" target="_blank" class="btn btn-sm btn-dark text-white">Watch video</a>
+                  </div>
+
+                </div>
+              </div>
+             </div>
+           </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

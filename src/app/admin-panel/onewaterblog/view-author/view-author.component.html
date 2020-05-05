@@ -1,0 +1,82 @@
+
+    <!-- Header -->
+    <div class="header bg-primary pb-6">
+        <div class="container-fluid">
+          <div class="header-body">
+            <div class="row align-items-center py-4">
+              <div class="col-lg-6 col-7">
+                <h6 class="h2 text-white d-inline-block mb-0">Author Details</h6>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--6">
+      <div class="row justify-content-center">
+
+        <div class="col-xl-10 col-lg-10">
+
+            <div class="card">
+                <div class="card-header">
+                  <h2 class="h2 mb-0">Basic Details</h2>
+                </div>
+                <div class="card-header d-flex align-items-center">
+                  <div class="d-flex align-items-center">
+                    <a href="#">
+                      <img src={{author?.image}} class="avatar">
+                    </a>
+                    <div class="mx-3">
+                      <h3 class="text-dark font-weight-600 text-md">{{author?.name}}</h3>
+                      <small class="d-block text-muted">{{author?.email}}</small>
+                    </div>
+                  </div>
+                  <div *ngIf="author?.approved_id==null" class="text-right ml-auto">
+                    <button (click)="approve(author._id, author.unapproved_id)" type="button" class="btn btn-sm btn-primary btn-icon">
+                      <span class="btn-inner--icon"><i class="fa fa-check" aria-hidden="true"></i>
+                      </span>
+                      <span class="btn-inner--text">Approve</span>
+                    </button>
+                    <button (click)="reject(author._id, author.unapproved_id)" type="button" class="btn btn-sm btn-danger btn-icon">
+                        <span class="btn-inner--icon"><i class="fa fa-trash" aria-hidden="true"></i></span>
+                        <span class="btn-inner--text">Reject</span>
+                      </button>
+                  </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h4>Phone</h4></div>
+                        <div class="col-md-9">
+                          {{author?.contact_no}}
+                        </div>
+                        <div class="col-md-3">
+                            <h4>Address</h4></div>
+                        <div class="col-md-9">
+                          {{author?.location}}
+                        </div>
+                        <div class="col-md-3">
+                            <h4>Linkedin Profile</h4></div>
+                        <div class="col-md-9">
+                            <a href="linkedin.com">{{author?.linkedIn_id}}</a>
+                        </div>
+                        <div class="col-md-3">
+                            <h4>Twitter Profile</h4></div>
+                        <div class="col-md-9">
+                            <a href="twitter.com">{{author?.twitter_id}}</a>
+                        </div>
+                    </div>
+
+                    <hr>
+                    <h2 class="h2 mb-1">About Author</h2>
+                  <p class="mb-4">
+                    {{author?.bio}}
+                  </p>
+
+                </div>
+              </div>
+        </div>
+      </div>
+
+    </div>
