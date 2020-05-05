@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonService } from '../common.service';
 
 @Component({
   selector: 'app-instructor-list',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InstructorListComponent implements OnInit {
   noContent;
-  constructor() { }
+  instructors;
+  constructor(public common: CommonService) { }
 
   ngOnInit(): void {
+    this.common.getRegisteredInstructor()
+    .subscribe(result=> {
+      console.log(result);
+      this.instructors = result.result
+    })
   }
 
 }

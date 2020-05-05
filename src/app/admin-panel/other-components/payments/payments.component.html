@@ -28,7 +28,7 @@
               No instructors to show.
             </h5>
           </div>
-          
+
           <!-- Light table -->
           <div class="table-responsive">
             <table class="table align-items-center table-flush table-striped">
@@ -36,22 +36,30 @@
                   <tr>
                     <th>Name</th>
                     <th>Email</th>
+                    <th>Amount</th>
                     <th>Payment Date</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td class="table-user">
-                      <b>John Michael</b>
+                  <tr *ngFor="let item of donations">
+                    <td *ngIf="item?.name != null" class="table-user">
+                      <b>{{item?.name}}</b>
                     </td>
-                    <td>
-                        <span class="text-dark">mandeepb29@gmail.com</span>
+
+                    <td *ngIf="item?.email != null">
+                        <span class="text-dark">{{item?.email}}</span>
                     </td>
-                    <td>
-                      <span class="text-muted">10 April, 2020</span>
+
+                    <td *ngIf="item?.amount != null">
+                      <span class="text-dark">{{item?.amount}}</span>
+                  </td>
+
+                    <td *ngIf="item?.name != null">
+                      <span class="text-muted">{{item?.date_added | date:'MMMM y,d'}}</span>
                     </td>
+
                   </tr>
-                  
+
                 </tbody>
               </table>
           </div>

@@ -54,7 +54,7 @@ const routes: Routes = [
         loadChildren: () => import('./instructors/instructor-list/instructor-list.module').then(m => m.InstructorListModule)
       },
       {
-        path:'view-instructor',
+        path:'view-instructor/:id',
         loadChildren: () => import('./instructors/instructor-details/instructor-details.module').then(m => m.InstructorDetailsModule)
       },
       {

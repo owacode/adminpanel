@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonService } from '../common.service';
 
 @Component({
   selector: 'app-drawing-responses',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DrawingResponsesComponent implements OnInit {
   noContent;
-  constructor() { }
+  drawing;
+  constructor(public common: CommonService) { }
 
   ngOnInit(): void {
+    this.common.getDrawing()
+    .subscribe(res=> {
+      console.log(res)
+      this.drawing = res;
+    })
   }
 
 }

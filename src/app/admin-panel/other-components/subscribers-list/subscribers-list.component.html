@@ -28,30 +28,30 @@
               No subscribers to show.
             </h5>
           </div>
-          
+
           <!-- Light table -->
           <div class="table-responsive">
             <table class="table align-items-center table-flush table-striped">
                 <thead class="thead-light">
                   <tr>
-                    <th>Name</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
                     <th>Email</th>
-                    <th>Date</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <tr *ngFor="let user of suscribed">
                     <td class="table-user">
-                      <b>John Michael</b>
+                      <b>{{ user?.firstname }}</b>
+                    </td>
+                    <td class="table-user">
+                      <b>{{ user?.lastname }}</b>
                     </td>
                     <td>
-                        <span class="text-dark">mandeepb29@gmail.com</span>
-                    </td>
-                    <td>
-                      <span class="text-muted">10 April, 2020</span>
+                        <span class="text-dark">{{ user?.email }}</span>
                     </td>
                   </tr>
-                  
+
                 </tbody>
               </table>
           </div>

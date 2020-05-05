@@ -41,6 +41,7 @@ export class AuthorService {
     .subscribe(result =>{
       console.log(result.msg);
       console.log(result);
+      alert("Author Approved Successfully")
     })
   }
 
@@ -53,6 +54,7 @@ export class AuthorService {
     .subscribe(result =>{
       console.log(result.msg);
       console.log(result);
+      alert("Author Rejected Successfully")
     })
   }
 }

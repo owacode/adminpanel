@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { CommonService } from '../common.service';
 
 @Component({
   selector: 'app-instructor-details',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InstructorDetailsComponent implements OnInit {
 
-  constructor() { }
+  instructor;
+  constructor(public route: ActivatedRoute, public common: CommonService) { }
 
   ngOnInit(): void {
+    this.route.params.subscribe(result=> {
+      console.log(result,'jkb');
+      this.common.getSingleRegisteredInstructor(result.id)
+      .subscribe(result=>{
+        console.log(result);
+        this.instructor=result.result;
+      })
+    })
   }
 
 }
