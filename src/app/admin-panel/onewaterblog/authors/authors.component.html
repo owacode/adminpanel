@@ -39,9 +39,21 @@
           <div class="card-header border-0">
             <h3 class="mb-0">{{authorsType | titlecase}} Authors</h3>
           </div>
+
+          <div class="loader">
+            <img src="assets/img/icons/loader.webp" alt="">
+            <div class="text">Fetching {{authorsType}} authors...</div>
+          </div>
+          <div class="no-content" *ngIf="noContent">
+            <img src="assets/img/icons/not-found.svg" alt="">
+            <h5 class="text text-muted">
+              No {{authorsType | titlecase}} blogs to show.
+            </h5>
+          </div>
+          
           <!-- Light table -->
           <div class="table-responsive">
-            <table class="table align-items-center table-flush">
+            <table class="table align-items-center table-flush" *ngIf="authorsToDisplay.length">
               <thead class="thead-light">
                 <tr>
                   <th scope="col" class="sort" data-sort="name">Basic Details</th>
@@ -71,7 +83,7 @@
                       </div>
                     </td>
                   <td class="budget">
-                    {{author?.date_added | date:'MMMM y,d'}}
+                    {{author?.date_added | date:'MMMM d, y'}} 
                   </td>
                   <!-- <td class="phone">
                     {{author?.phone}}

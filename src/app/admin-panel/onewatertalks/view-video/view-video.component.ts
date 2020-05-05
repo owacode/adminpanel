@@ -24,7 +24,7 @@ export class ViewVideoComponent implements OnInit {
         console.log(result);
         this.video=result.result;
         const link=this.getId(this.video.video_link);
-        this.video.video_link=`https://www.youtube.com/embed/${link}`;
+        this.video.video_link=`https://www.youtube.com/watch/${link}`;
         this.safeSrc =  this.sanitizer.bypassSecurityTrustResourceUrl(this.video.video_link);
         console.log(this.video)
         this.getlikes(link);

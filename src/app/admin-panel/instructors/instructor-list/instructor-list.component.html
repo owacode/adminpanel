@@ -3,29 +3,10 @@
       <div class="header-body">
         <div class="row align-items-center py-4">
           <div class="col-lg-6 col-7">
-            <h6 class="h2 text-white d-inline-block mb-0">Received Videos</h6>
+            <h6 class="h2 text-white d-inline-block mb-0">Instructors</h6>
 
           </div>
-          <!-- <div class="col-lg-6 col-5 text-right dropdown" >
-            <a href="#" class="btn btn-sm btn-neutral" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fa fa-filter" aria-hidden="true"></i>
-              Filters</a>
-            <div class="dropdown-menu  dropdown-menu-right ">
-              <a (click)="showAllvideos()" class="dropdown-item">
-                <i class="ni ni-bullet-list-67 text-dark" ></i>
-                <span>All videos</span>
-              </a>
-              <a (click)="showApprovedvideos()" class="dropdown-item">
-                <i class="ni ni-check-bold text-success"></i>
-                <span>Approved videos</span>
-              </a>
-              <a (click)="showPendingvideos()" class="dropdown-item">
-                <i class="fa fa-clock-o text-warning" aria-hidden="true"></i>
-                <span>Pending videos</span>
-              </a>
-
-            </div>
-          </div> -->
+         
         </div>
       </div>
     </div>
@@ -36,58 +17,65 @@
       <div class="col">
         <div class="card">
           <!-- Card header -->
-          <div class="card-header border-0">
-            <h3 class="mb-0">Videos received from users</h3>
-          </div>
-          <!-- Light table -->
+          <!-- <div class="card-header border-0">
+            <h3 class="mb-0">{{authorsType | titlecase}} Authors</h3>
+          </div> -->
+
           <div class="loader">
             <img src="assets/img/icons/loader.webp" alt="">
-            <div class="text">Fetching videos...</div>
+            <div class="text">Fetching instructors ...</div>
           </div>
           <div class="no-content" *ngIf="noContent">
             <img src="assets/img/icons/not-found.svg" alt="">
             <h5 class="text text-muted">
-              No videos to show.
+              No instructors to show.
             </h5>
           </div>
-          <div class="table-responsive" *ngIf="videos?.length">
+          
+          <!-- Light table -->
+          <div class="table-responsive">
             <table class="table align-items-center table-flush">
               <thead class="thead-light">
                 <tr>
-                  <th scope="col" class="sort" data-sort="name">Title</th>
-                  <th scope="col" class="sort" data-sort="budget">Link</th>
-                  <th scope="col">Actions</th>
+                  <th scope="col" class="sort" data-sort="name">Basic Details</th>
+                  <th scope="col" class="sort" data-sort="budget">Date</th>
+                  <th scope="col" class="sort" data-sort="status">Organisation</th>
+                  <th scope="col" class="sort" data-sort="phone">Course Offered</th>
+                  <th scope="col" class="text-center">Actions</th>
                 </tr>
               </thead>
               <tbody class="list">
 
-                <tr *ngFor="let video of videos">
+                <tr>
                     <td>
                     <div class="row align-items-center">
                         <div class="col-auto">
                           <!-- Avatar -->
-                          <!-- <a href="#" class="avatar rounded-circle">
-                            <img alt="Image placeholder" src="../../assets/img/theme/team-3.jpg">
-                          </a> -->
+                          <a class="avatar rounded-circle">
+                            <img alt="Image placeholder" src="/assets/img/theme/img-1-1000x600.jpg">
+                          </a>
                         </div>
                         <div class="col ml--2">
                           <h3 class="mb-0">
-                           {{video?.title}}
+                           Mandeep Baghel
                           </h3>
-                          <span class="text-sm text-muted">{{video?.date_added | date:'MMMM d, y'}}</span>
+                          <span class="text-sm text-muted">mandeepb29@gmail.com</span>
                         </div>
                       </div>
                     </td>
                   <td class="budget">
-                    <a href="{{video?.video_link}}" target="_blank" class="btn btn-sm btn-secondary">{{video?.video_link}}</a>
+                    14 April, 2020
                   </td>
-
-                  <td>
-                    <a [routerLink]="['/view-video/',video?._id]" class="btn btn-sm btn-primary">View Details</a>
-                    <a href="{{video?.video_link}}" target="_blank" class="btn btn-sm btn-dark">Watch Video</a>
+                  <td class="budget">
+                    Zeit Labs
+                  </td>
+                  <td class="budget">
+                    Water Management
+                  </td>
+                  <td class="d-flex justify-content-around align-content-center">
+                    <a [routerLink]="['/view-instructor']" class="btn btn-sm btn-primary mt-2 px-3 py-2">View Course</a>
                   </td>
                 </tr>
-
               </tbody>
             </table>
           </div>

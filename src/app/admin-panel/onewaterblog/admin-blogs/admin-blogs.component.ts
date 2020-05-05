@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoaderFunctions } from 'src/app/common/loader-functions';
 
 @Component({
   selector: 'app-admin-blogs',
@@ -6,8 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-blogs.component.scss']
 })
 export class AdminBlogsComponent implements OnInit {
-
-  adminBlogs = [
+  noContent;
+  adminBlogs 
+  blogs = [
     {
       title:'Lorem ipsum dolor, sit amet consectetur',
       author:'Admin',
@@ -93,10 +95,14 @@ export class AdminBlogsComponent implements OnInit {
       
     }
   ]
-
-  constructor() { }
+  constructor(public loader: LoaderFunctions) { }
 
   ngOnInit(): void {
+    this.noContent = false;
+    this.loader.showLoader();
+    this.adminBlogs = this.blogs;
+    this.loader.hideLoader();
+    if (!this.adminBlogs.length) this.noContent = true;
   }
 
   removeBlog(){}

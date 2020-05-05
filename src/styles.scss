@@ -53,3 +53,24 @@
 @import './assets/scss/custom/vendors';
 
 
+//common styles
+.loader,.no-content{
+    height: 300px;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    img{
+        max-width: 100px;
+    }
+    .text{
+        text-align: center;
+        font-size: 1rem;
+        margin-top:1rem;
+        font-weight: 700;
+    }
+}
+.no-content{
+    display: flex;
+}
