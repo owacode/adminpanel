@@ -20,6 +20,16 @@
             <h3 class="mb-0">OneWater Talks Videos</h3>
           </div>
           <div class="card-body">
+            <div class="loader">
+              <img src="assets/img/icons/loader.webp" alt="">
+              <div class="text">Fetching videos...</div>
+            </div>
+            <div class="no-content" *ngIf="noContent">
+              <img src="assets/img/icons/not-found.svg" alt="">
+              <h5 class="text text-muted">
+                No videos to show.
+              </h5>
+            </div>
            <div class="row">
              <div class="col-lg-4 col-md-6" *ngFor="let video of videos">
               <div class="card">
@@ -47,14 +57,14 @@
                       </div>
                   <h5 class="h2 card-title my-0 text-bold">{{video?.title}} </h5>
                   <div class="d-flex justify-content-end mt-2">
-                    <small class="text-muted">{{video?.date_added | date:'MMMM d,y'}}</small>
+                    <small class="text-muted">{{video?.date_added | date:'MMMM d, y'}}</small>
                   </div>
 
                   <!-- <p class="card-text mt-4">Argon is a great free UI package based on Bootstrap 4 that includes the most important components and features.</p> -->
                   <hr class="my-3">
                   <div class="d-flex justify-content-between">
                     <a [routerLink]="['/view-video',video._id]" class="btn btn-sm btn-primary">View more details</a>
-                    <a [href]="video?.url" target="_blank" class="btn btn-sm btn-dark text-white">Watch video</a>
+                    <a href="{{video?.video_link}}" target="_blank" class="btn btn-sm btn-dark text-white">Watch video</a>
                   </div>
 
                 </div>

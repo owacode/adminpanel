@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonService } from '../common.service';
+import { LoaderFunctions } from 'src/app/common/loader-functions';
 
 @Component({
   selector: 'app-videos',
@@ -7,20 +8,25 @@ import { CommonService } from '../common.service';
   styleUrls: ['./videos.component.scss']
 })
 export class VideosComponent implements OnInit {
-
+  noContent;
   public videos;
-  constructor(public common: CommonService) { }
+  constructor(public common: CommonService,public loader: LoaderFunctions) { }
 
   ngOnInit() {
+    this.noContent = false;
+    this.loader.showLoader();
     this.common.getvideos()
     .subscribe(result=> {
       console.log(result);
       this.videos=result.result;
+      if(!this.videos.length) this.noContent = true;
       for(let i=0; i<this.videos.length; i++)
       {
         let image=this.getId(this.videos[i].video_link);
         this.videos[i].image=`https://img.youtube.com/vi/${image}/0.jpg`;
       }
+      this.loader.hideLoader();
+
     })
   }
 

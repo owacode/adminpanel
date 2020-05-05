@@ -17,7 +17,7 @@
         <div class="card">
           <div class="card-header bg-transparent d-flex align-items-center">
             <h3 class="mb-0">{{blog?.title}}</h3>
-            <div *ngIf="blog?.status != 'approved'" class="text-right ml-auto">
+            <div *ngIf="blog?.status == 'pending'" class="text-right ml-auto">
               <button type="button" class="btn btn-sm btn-primary btn-icon" data-toggle="modal" data-target="#approveForm" >
                 <span class="btn-inner--icon"><i class="fa fa-check" aria-hidden="true"></i>
                 </span>

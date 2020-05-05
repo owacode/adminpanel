@@ -25,7 +25,7 @@
                 <div class="card-header d-flex align-items-center">
                   <div class="d-flex align-items-center">
                     <a href="#">
-                      <img src="assets/img/theme/team-1.jpg" class="avatar">
+                      <img [src]="video?.image" class="avatar">
                     </a>
                     <div class="mx-3">
                       <h3 class="text-dark font-weight-600 text-md">{{video?.title}}</h3>
@@ -50,7 +50,7 @@
                         <div class="col-md-3">
                             <h4>Category</h4></div>
                         <div class="col-md-9">
-                          {{video?.category}}
+                          {{video?.category | titlecase}}
                         </div>
                         <div class="col-md-3">
                             <h4>URL</h4></div>

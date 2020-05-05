@@ -48,6 +48,26 @@ const routes: Routes = [
       {
         path:'received-videos',
         loadChildren: () => import('./onewatertalks/received-videos/received-videos.module').then(m => m.ReceivedVideosModule)
+      },
+      {
+        path:'instructors',
+        loadChildren: () => import('./instructors/instructor-list/instructor-list.module').then(m => m.InstructorListModule)
+      },
+      {
+        path:'view-instructor',
+        loadChildren: () => import('./instructors/instructor-details/instructor-details.module').then(m => m.InstructorDetailsModule)
+      },
+      {
+        path:'drawing-responses',
+        loadChildren: () => import('./instructors/drawing-responses/drawing-responses.module').then(m => m.DrawingResponsesModule)
+      },
+      {
+        path:'subscribers',
+        loadChildren: () => import('./other-components/subscribers-list/subscribers-list.module').then(m => m.SubscribersListModule)
+      },
+      {
+        path:'payments',
+        loadChildren: () => import('./other-components/payments/payments.module').then(m => m.PaymentsModule)
       }
     ]
   }

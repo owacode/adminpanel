@@ -20,6 +20,16 @@
           <!-- <div class="card-header bg-transparent">
             <h3 class="mb-0">{{blogsType | titlecase}} Blogs</h3>
           </div> -->
+          <div class="loader">
+            <img src="assets/img/icons/loader.webp" alt="">
+            <div class="text">Fetching admin blogs...</div>
+          </div>
+          <div class="no-content" *ngIf="noContent">
+            <img src="assets/img/icons/not-found.svg" alt="">
+            <h5 class="text text-muted">
+              No admin blogs to show.
+            </h5>
+          </div>
           <div class="card-body">
            <div class="row">
              <div class="col-lg-4 col-md-6" *ngFor="let blog of adminBlogs">

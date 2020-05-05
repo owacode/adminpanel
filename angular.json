@@ -89,6 +89,7 @@
             "karmaConfig": "karma.conf.js",
             "assets": [
               "src/favicon.ico",
+              "node_modules/sweetalert2/src/sweetalert2.scss",
               "src/assets"
             ],
             "styles": [
