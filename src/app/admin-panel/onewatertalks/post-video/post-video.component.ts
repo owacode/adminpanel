@@ -13,6 +13,8 @@ export class PostVideoComponent implements OnInit {
   category;
   showSubcatrgory;
   subcategory;
+  image;
+  submited: Boolean = false;
   constructor(public common: CommonService) { }
 
   ngOnInit() {
@@ -26,12 +28,12 @@ export class PostVideoComponent implements OnInit {
       views:new FormControl(null, {validators:[Validators.required]}),
     })
   }
-image
   addVideo(){
     console.log(this.form);
-    // if(this.form.invalid){
-    //   return;
-    // }
+    this.submited = true;
+    if(this.form.invalid){
+      return;
+    }
 
       this.image= this.getId(this.form.value.video_link);
       this.form.value.image=`https://img.youtube.com/vi/${this.image}/0.jpg`

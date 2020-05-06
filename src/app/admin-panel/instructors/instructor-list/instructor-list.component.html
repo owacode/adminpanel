@@ -6,7 +6,7 @@
             <h6 class="h2 text-white d-inline-block mb-0">Instructors</h6>
 
           </div>
-         
+
         </div>
       </div>
     </div>
@@ -31,7 +31,7 @@
               No instructors to show.
             </h5>
           </div>
-          
+
           <!-- Light table -->
           <div class="table-responsive">
             <table class="table align-items-center table-flush">
@@ -39,14 +39,14 @@
                 <tr>
                   <th scope="col" class="sort" data-sort="name">Basic Details</th>
                   <th scope="col" class="sort" data-sort="budget">Date</th>
-                  <th scope="col" class="sort" data-sort="status">Organisation</th>
+                  <th scope="col" class="sort" data-sort="status">Contact No.</th>
                   <th scope="col" class="sort" data-sort="phone">Course Offered</th>
                   <th scope="col" class="text-center">Actions</th>
                 </tr>
               </thead>
               <tbody class="list">
 
-                <tr>
+                <tr *ngFor="let inst of instructors">
                     <td>
                     <div class="row align-items-center">
                         <div class="col-auto">
@@ -57,23 +57,23 @@
                         </div>
                         <div class="col ml--2">
                           <h3 class="mb-0">
-                           Mandeep Baghel
+                           {{inst.firstname}} {{inst.lastname}}
                           </h3>
-                          <span class="text-sm text-muted">mandeepb29@gmail.com</span>
+                          <span class="text-sm text-muted">{{inst.email}}</span>
                         </div>
                       </div>
                     </td>
                   <td class="budget">
-                    14 April, 2020
+                    {{inst.date_added | date:'MMMM y,d'}}
                   </td>
                   <td class="budget">
-                    Zeit Labs
+                    {{inst.mobile_no}}
                   </td>
                   <td class="budget">
-                    Water Management
+                    {{inst.course_type}}
                   </td>
                   <td class="d-flex justify-content-around align-content-center">
-                    <a [routerLink]="['/view-instructor']" class="btn btn-sm btn-primary mt-2 px-3 py-2">View Course</a>
+                    <a [routerLink]="['/view-instructor',inst._id]" class="btn btn-sm btn-primary mt-2 px-3 py-2">View Course</a>
                   </td>
                 </tr>
               </tbody>

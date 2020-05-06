@@ -28,25 +28,25 @@
                       <img src="/assets/img/theme/img-1-1000x600.jpg" class="avatar">
                     </a>
                     <div class="mx-3">
-                      <h3 class="text-dark font-weight-600 text-md">Instructor Name</h3>
-                      <small class="d-block text-muted">email</small>
+                      <h3 class="text-dark font-weight-600 text-md">{{instructor?.firstname}} {{instructor?.lastname}}</h3>
+                      <small class="d-block text-muted">{{instructor?.email}}</small>
                     </div>
                   </div>
-                  
+
                 </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-3">
                             <h4>Phone</h4></div>
                         <div class="col-md-9">
-                         5455544554
+                          {{instructor?.mobile_no}}
                         </div>
                         <div class="col-md-3">
                             <h4>Organisation</h4></div>
                         <div class="col-md-9">
-                          Organisation Name
+                          {{instructor?.organization}}
                         </div>
-                        
+
                     </div>
 
                     <hr>
@@ -55,24 +55,24 @@
                         <div class="col-md-3">
                             <h4>Course Title</h4></div>
                         <div class="col-md-9">
-                            Water Management
+                            {{instructor?.proposed_course_title}}
                         </div>
                         <div class="col-md-3">
                             <h4>Course Type</h4></div>
                         <div class="col-md-9">
-                         Webinar
+                          {{instructor?.course_type}}
                         </div>
                         <div class="col-md-3">
                             <h4>Course Topic</h4></div>
                         <div class="col-md-9">
-                          Somthing
+                          {{instructor?.proposed_course_topic}}
                         </div>
-                       
+
                         <div class="col-md-3">
                             <h4>Course Description</h4></div>
                         <div class="col-md-9">
                             <p>
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo adipisci nostrum, dolor corporis dolore distinctio veritatis optio dolorem eos praesentium nulla eveniet ullam error molestias totam facilis numquam molestiae minima nam alias earum repellendus, provident modi necessitatibus! Excepturi unde ea nesciunt, laborum facere tempore veritatis rem error vitae nulla et.
+                              {{instructor?.proposed_desc}}
                             </p>
                         </div>
                     </div>

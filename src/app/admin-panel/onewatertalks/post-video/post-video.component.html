@@ -30,6 +30,9 @@
                 placeholder="Enter Video Title"
                 formControlName="title"
               />
+              <div class="error" *ngIf="submited && form.get('title').invalid">
+                Please enter title!
+              </div>
             </div>
 
             <div class="form-group">
@@ -43,6 +46,9 @@
                 placeholder="Paste or enter Video Link"
                 formControlName="video_link"
               />
+              <div class="error" *ngIf="submited && form.get('video_link').invalid">
+                Please enter title!
+              </div>
             </div>
 
             <div class="form-group">
@@ -57,6 +63,9 @@
                 rows="3"
                 formControlName="desc"
               ></textarea>
+              <div class="error" *ngIf="submited && form.get('desc').invalid">
+                Please enter title!
+              </div>
             </div>
 
             <div class="form-group">
@@ -81,6 +90,9 @@
                   >Legislative &amp; Regulatory</option
                 ></select
               >
+              <div class="error" *ngIf="submited && form.get('category').invalid">
+                Please enter title!
+              </div>
             </div>
 
             <hr>

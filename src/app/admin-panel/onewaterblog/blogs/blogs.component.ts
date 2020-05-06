@@ -41,14 +41,14 @@ blogstoDisplay = [];
     this.blogstoDisplay=[];
     this.blogsType = 'approved';
     this.loader.showLoader();
-   
+
     this.blogs.forEach(element => {
       if(element.status == 'approved'){
         this.blogstoDisplay.push(element);
       }
     });
     this.loader.hideLoader();
-    
+
     if(!this.blogstoDisplay.length) this.noContent = true;
   }
 
@@ -64,7 +64,7 @@ blogstoDisplay = [];
       }
     });
     this.loader.hideLoader();
-    
+
     if(!this.blogstoDisplay.length) this.noContent = true;
   }
 
@@ -80,26 +80,32 @@ blogstoDisplay = [];
       }
     });
     this.loader.hideLoader();
-    
+
     if(!this.blogstoDisplay.length) this.noContent = true;
   }
 
   moveToAdminBlogs(){}
 
   deleteApproveBlog(main_id,approved_id,author_id) {
-    console.log(main_id,approved_id,author_id)
-    this.blogService.deleteApproveBlog(main_id,approved_id,author_id)
-    .subscribe(result=> {
-      alert("Blog Deleted Successfully");
-    })
+    if(confirm("Delete This Blog")) {
+      console.log(main_id,approved_id,author_id)
+      this.blogService.deleteApproveBlog(main_id,approved_id,author_id)
+      .subscribe(result=> {
+        alert("Blog Deleted Successfully");
+      })
+    }
+    else return;
   }
 
   deleteUnApproveBlog(main_id,unapproved_id) {
+    if(confirm("Delete This Blog")) {
     console.log(main_id,unapproved_id)
     this.blogService.deleteUnApproveBlog(main_id,unapproved_id)
     .subscribe(result=> {
       alert("Blog Deleted Successfully");
     })
+  }
+  else return;
   }
 
 }

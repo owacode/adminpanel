@@ -28,7 +28,7 @@
               No instructors to show.
             </h5>
           </div>
-          
+
           <!-- Light table -->
           <div class="table-responsive">
             <table class="table align-items-center table-flush table-striped">
@@ -41,23 +41,23 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <tr *ngFor="let item of drawing">
                     <td class="table-user">
-                      <b>John Michael</b>
+                      <b>{{item?.firstname}} {{item?.lastname}}</b>
                     </td>
                     <td>
-                        <span class="text-dark">mandeepb29@gmail.com</span>
+                        <span class="text-dark">{{item?.email}}</span>
                     </td>
                     <td>
-                      <span class="text-muted">10 April, 2020</span>
+                      <span class="text-muted">{{item?.date_registered | date:'MMMM y,d'}}</span>
                     </td>
-                   
+
                     <td>
-                      <a lass="font-weight-bold">Argon Dashboard PRO</a>
+                      <a lass="font-weight-bold">{{item?.organization}}</a>
                     </td>
-                    
+
                   </tr>
-                  
+
                 </tbody>
               </table>
           </div>
