@@ -46,7 +46,7 @@ const routes: Routes = [
         loadChildren: () => import('./onewatertalks/view-video/view-video.module').then(m => m.ViewVideoModule)
       },
       {
-        path:'view-received-video',
+        path:'view-received-video/:id',
         loadChildren: () => import('./onewatertalks/view-received-video/view-received-video.module').then(m => m.ViewReceivedVideoModule)
       },
       {

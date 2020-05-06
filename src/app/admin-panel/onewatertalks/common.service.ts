@@ -66,6 +66,12 @@ export class CommonService {
     );
   }
 
+  getSingleAuthorVideos(id) {
+    return this.http.get<{ status: any; msg: any; result: any }>(
+      "https://onewater-video-api.herokuapp.com/author-videos/"+id
+    );
+  }
+
   getAuthorSingleVideo(id) {
     return this.http.get<{ status: any; msg: any; result: any }>(
       "https://onewater-video-api.herokuapp.com/author-videos/" + id
