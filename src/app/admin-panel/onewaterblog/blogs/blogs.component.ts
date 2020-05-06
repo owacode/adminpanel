@@ -89,14 +89,14 @@ blogstoDisplay = [];
   }
 
   moveToAdminBlog(i){
-    if(confirm("Add Blog to home")) {
+    if(confirm("Add this blog to Admin Blogs ?")) {
       console.log(this.blogstoDisplay[i]);
       this.blogService.addToHomeBlog(this.blogstoDisplay[i]);
     } else return;
   }
 
   deleteApproveBlog(main_id,approved_id,author_id) {
-    if(confirm("Delete This Blog")) {
+    if(confirm("Are you sure you want to delete this blog ?")) {
       console.log(main_id,approved_id,author_id)
       this.blogService.deleteApproveBlog(main_id,approved_id,author_id)
       .subscribe(result=> {
@@ -107,7 +107,7 @@ blogstoDisplay = [];
   }
 
   deleteUnApproveBlog(main_id,unapproved_id) {
-    if(confirm("Delete This Blog")) {
+    if(confirm("Are you sure you want to delete this blog ?")) {
     console.log(main_id,unapproved_id)
     this.blogService.deleteUnApproveBlog(main_id,unapproved_id)
     .subscribe(result=> {

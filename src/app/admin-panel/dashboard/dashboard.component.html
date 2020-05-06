@@ -197,13 +197,23 @@
             <!-- Title -->
             <h5 class="h3 mb-0">Latest Author Requests</h5>
 
-            <button type="button" class="btn btn-sm btn-primary">See All</button>
+            <button type="button" routerLink="/authors" class="btn btn-sm btn-primary">See All</button>
           </div>
           <!-- Card body -->
           <div class="card-body">
+            <div class="loader">
+              <img src="assets/img/icons/loader.webp" alt="">
+              <div class="text">Fetching authors requests...</div>
+            </div>
+            <div class="no-content" *ngIf="noContent">
+              <img src="assets/img/icons/not-found.svg" alt="">
+              <h5 class="text text-muted">
+                No authors requests to show.
+              </h5>
+            </div>
             <!-- List group -->
             <ul class="list-group list-group-flush list my--3">
-              <li class="list-group-item px-0" *ngFor="let author of authors">
+              <li class="list-group-item px-0" *ngFor="let author of pendingauthors">
                 <div class="row align-items-center">
                   <div class="col-auto">
                     <!-- Avatar -->
@@ -219,7 +229,7 @@
                     <small>{{author?.date_added | date: 'MMMM y,d'}}</small>
                   </div>
                   <div class="col-auto">
-                    <button type="button" class="btn btn-sm btn-primary">View</button>
+                    <button type="button" [routerLink]="['/view-author/',author?._id]" class="btn btn-sm btn-primary">View</button>
                   </div>
                 </div>
               </li>

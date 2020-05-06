@@ -77,15 +77,14 @@ export class AuthorsComponent implements OnInit {
     
   }
 
-  deleteAuthor(){
-
-  }
-
+ 
   approve(mainid, blogid){
     this.authorService.approveAuthor(mainid, blogid);
+    //alert("Author has been approved");
   }
 
   reject(mainid, blogid){
     this.authorService.rejectAuthor(mainid, blogid);
+    //alert("Author has been rejected");
   }
 }

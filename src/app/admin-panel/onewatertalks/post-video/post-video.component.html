@@ -73,7 +73,7 @@
                 >Video Category</label
               >
 
-              <select class="form-control" id="videocategory" (change)="onChange($event)"
+              <select class="form-control" id="videocategory" formControlName="category" (change)="onChange($event)"
                 ><option value="">Select video category</option
                 ><option value="water">Water</option
                 ><option value="wastewater"
@@ -81,17 +81,17 @@
                 ><option value="stormwater"
                   >Stormwater</option
                 ><option value="research"
-                  >Innovation &amp; Research</option
+                  >Innovation & Research</option
                 ><option value="sustainable"
                   >Sustainable Development</option
                 ><option value="mgmt"
-                  >Management &amp; Finance</option
+                  >Management & Finance</option
                 ><option value="leg"
-                  >Legislative &amp; Regulatory</option
+                  >Legislative & Regulatory</option
                 ></select
               >
               <div class="error" *ngIf="submited && form.get('category').invalid">
-                Please enter title!
+                Please select category!
               </div>
             </div>
 

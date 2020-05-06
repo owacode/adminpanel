@@ -26,7 +26,7 @@ export class AdminBlogsComponent implements OnInit {
   }
 
   removeBlog(id){
-    if(confirm("Delete Blog")) {
+    if(confirm("Are you sure you want to delete this blog ?")) {
       this.blogService.deleteHomeBlogs(id)
       .subscribe(res=> {
         alert("Blog Deleted")

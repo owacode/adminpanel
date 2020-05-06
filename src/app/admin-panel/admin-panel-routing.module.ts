@@ -30,6 +30,10 @@ const routes: Routes = [
         loadChildren: () => import('./onewaterblog/view-blog/view-blog.module').then(m => m.ViewBlogModule)
       },
       {
+        path:'view-admin-blog',
+        loadChildren: () => import('./onewaterblog/view-admin-blog/view-admin-blog.module').then(m => m.ViewAdminBlogModule)
+      },
+      {
         path:'view-author/:id',
         loadChildren: () => import('./onewaterblog/view-author/view-author.module').then(m => m.ViewAuthorModule)
       },

@@ -98,9 +98,9 @@
                         <span class="status">approved</span>
                       </span>
                   </td>
-                  <td class="d-flex justify-content-around align-content-center">
+                  <td class="d-flex justify-content-between align-content-center">
                     <a [routerLink]="['/view-author',author?._id]" class="btn btn-sm btn-primary mt-2 px-3 py-2">View Author</a>
-                    <div class="dropdown">
+                    <div class="dropdown" *ngIf="author?.status == 'pending'">
                       <a class="btn btn-sm btn-icon-only text-light" title="More Options" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-ellipsis-v"></i>
                       </a>

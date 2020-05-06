@@ -22,10 +22,7 @@ export class PostVideoComponent implements OnInit {
       title:new FormControl(null, {validators:[Validators.required]}),
       video_link:new FormControl(null, {validators:[Validators.required]}),
       desc:new FormControl(null, {validators:[Validators.required, Validators.maxLength(500)]}),
-      category:new FormControl(null, {validators:[Validators.required]}),
-      image:new FormControl(null, {validators:[Validators.required]}),
-      likes:new FormControl(null, {validators:[Validators.required]}),
-      views:new FormControl(null, {validators:[Validators.required]}),
+      category:new FormControl(null, {validators:[Validators.required]})
     })
   }
   addVideo(){
@@ -42,12 +39,12 @@ export class PostVideoComponent implements OnInit {
     this.common.getLikes(this.image)
     .subscribe(result=>{
       console.log(result.items[0].statistics,'result displayed');
-
+      alert("The video has been posted successfully.")
       this.form.value.likes=result.items[0].statistics.likeCount,
       this.form.value.views=result.items[0].statistics.viewCount,
       this.common.addvideo(this.form.value);
       this.form.reset();
-      alert("The video has been posted successfully.")
+     
     })
   }
 
