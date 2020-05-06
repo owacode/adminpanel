@@ -11,7 +11,7 @@ export class AuthorsComponent implements OnInit {
   authorsToDisplay=[];
   authorsType;
   noContent;
-  authors;
+  authors = [];
   constructor(public authorService: AuthorService, public loader: LoaderFunctions) { }
 
   ngOnInit(): void {
@@ -22,19 +22,22 @@ export class AuthorsComponent implements OnInit {
     //reset ui and blog array
     this.noContent = false;
     this.authorsToDisplay=[];
-    this.loader.showLoader();
     this.authorsType = 'all';
-
-    this.authorService.getAllAuthor()
-    .subscribe(res=> {
-      console.log(res)
-      this.authorsToDisplay = res.result.reverse();
-      this.authors = this.authorsToDisplay;
-
-      //change ui
-      this.loader.hideLoader();
+    if(!this.authors.length){
+    this.loader.showLoader();
+      this.authorService.getAllAuthor()
+      .subscribe(res=> {
+        console.log(res)
+        this.authorsToDisplay = res.result.reverse();
+        this.authors = this.authorsToDisplay;
+        this.loader.hideLoader();
       if(!this.authorsToDisplay.length) this.noContent = true;
     })
+    }
+    else
+    this.authorsToDisplay = this.authors;
+      //change ui
+      
   }
   showPendingAuthors(){
     //reset ui and blog array

@@ -12,7 +12,7 @@ import { $ } from 'protractor';
 export class BlogsComponent implements OnInit {
 
 blogsType;
-blogs;
+blogs=[];
 noContent;
 blogstoDisplay = [];
 
@@ -25,15 +25,19 @@ blogstoDisplay = [];
     this.noContent = false;
     this.blogstoDisplay=[];
     this.blogsType = 'all';
-    this.loader.showLoader();
-    this.blogService.getAllBlogs()
-    .subscribe(result=>{
-      console.log(result);
-      this.blogstoDisplay=result.result.reverse();
-      this.loader.hideLoader();
-      this.blogs = this.blogstoDisplay;
-      if(!this.blogstoDisplay.length) this.noContent = true;
-    })
+    if(!this.blogs.length){
+      this.loader.showLoader();
+      this.blogService.getAllBlogs()
+      .subscribe(result=>{
+        console.log(result);
+        this.blogstoDisplay=result.result.reverse();
+        this.loader.hideLoader();
+        this.blogs = this.blogstoDisplay;
+        if(!this.blogstoDisplay.length) this.noContent = true;
+      })
+    }
+    else
+    this.blogstoDisplay = this.blogs;
   }
 
   showApprovedBlogs(){

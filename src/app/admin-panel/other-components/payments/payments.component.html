@@ -25,13 +25,13 @@
           <div class="no-content" *ngIf="noContent">
             <img src="assets/img/icons/not-found.svg" alt="">
             <h5 class="text text-muted">
-              No instructors to show.
+              No payments to show.
             </h5>
           </div>
 
           <!-- Light table -->
           <div class="table-responsive">
-            <table class="table align-items-center table-flush table-striped">
+            <table class="table align-items-center table-flush table-striped" *ngIf="donations.length">
                 <thead class="thead-light">
                   <tr>
                     <th>Name</th>

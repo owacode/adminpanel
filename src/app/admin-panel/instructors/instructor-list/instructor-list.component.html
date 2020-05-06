@@ -34,7 +34,7 @@
 
           <!-- Light table -->
           <div class="table-responsive">
-            <table class="table align-items-center table-flush">
+            <table class="table align-items-center table-flush" *ngIf="instructors.length">
               <thead class="thead-light">
                 <tr>
                   <th scope="col" class="sort" data-sort="name">Basic Details</th>
@@ -49,13 +49,8 @@
                 <tr *ngFor="let inst of instructors">
                     <td>
                     <div class="row align-items-center">
-                        <div class="col-auto">
-                          <!-- Avatar -->
-                          <a class="avatar rounded-circle">
-                            <img alt="Image placeholder" src="/assets/img/theme/img-1-1000x600.jpg">
-                          </a>
-                        </div>
-                        <div class="col ml--2">
+                       
+                        <div class="col">
                           <h3 class="mb-0">
                            {{inst.firstname}} {{inst.lastname}}
                           </h3>
