@@ -42,10 +42,12 @@ export class VideosComponent implements OnInit {
   }
 
   delete(id) {
-    this.common.deletevideo(id)
-    .subscribe(result=> {
-      console.log(result);
-      alert("Video Deleted Successfully");
-    })
+    if(confirm("Are you sure you want to delete this video ?")) {
+      this.common.deletevideo(id)
+      .subscribe(result=> {
+        console.log(result);
+        alert("Video Deleted Successfully");
+      })
+    } else return;
   }
 }
