@@ -75,6 +75,6 @@
 	}
 
     + .icon-text {
-    	width: calc(100% - $icon-size-xs - 1);
+    	width: calc(100% - #{$icon-size-xs} - 1);
     }
 }
