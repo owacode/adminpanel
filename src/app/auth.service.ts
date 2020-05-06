@@ -22,7 +22,7 @@ export class AuthService {
   }
 
   login(data) {
-    this.http.post<{status:string, msg: string, result: any}>('http://localhost:3000/admin-login', data)
+    this.http.post<{status:string, msg: string, result: any}>('https://onewater-auth.herokuapp.com/admin-login', data)
     .subscribe(res=> {
       console.log(res)
       if(res.status != 'success') return alert(res.msg);
