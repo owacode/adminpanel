@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   token;
-  isLoggedIn: Boolean = false;
+  isLoggedIn: boolean = false;
   constructor(public http: HttpClient, public router: Router) {}
 
   checkLocalStorage() {
@@ -18,14 +18,16 @@ export class AuthService {
       return;
     }
     this.isLoggedIn = true;
+    this.router.navigate(['/'])
   }
 
   login(data) {
-    this.http.post<{status:string, msg: string, result: any}>('https://onewater-auth.herokuapp.com/admin-login', data)
+    this.http.post<{status:string, msg: string, result: any}>('http://localhost:3000/admin-login', data)
     .subscribe(res=> {
-      if(res.status != 'success') return;
       console.log(res)
+      if(res.status != 'success') return alert(res.msg);
       this.token = res.result.token;
+      this.isLoggedIn = true;
       localStorage.setItem('onewateradmintoken', this.token);
       this.router.navigate(['/'])
     })

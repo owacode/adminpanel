@@ -21,10 +21,12 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    console.log(this.form.value)
     this.submited = true;
     if(this.form.invalid) {
       return;
     }
+    console.log(this.form.value)
     this.auth.login(this.form.value);
   }
 
