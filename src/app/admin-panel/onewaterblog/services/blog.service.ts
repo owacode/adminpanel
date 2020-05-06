@@ -36,6 +36,10 @@ export class BlogService {
     return this.http.get<{status:any,msg:any,result:any}>('https://onewater-blogapi.herokuapp.com/homeblog');
   }
 
+  getSingleHomeBlogs(id){
+    return this.http.get<{status:any,msg:any,result:any}>('https://onewater-blogapi.herokuapp.com/homeblog/'+id);
+  }
+
   deleteHomeBlogs(id){
     return this.http.delete<{status:any,msg:any,result:any}>('https://onewater-blogapi.herokuapp.com/home-blog/'+id);
   }

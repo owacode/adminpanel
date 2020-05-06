@@ -51,7 +51,7 @@
                   <hr class="my-3">
                   <div class="d-flex justify-content-between">
                     <a (click)="removeBlog(blog?._id)" class="btn btn-sm btn-danger text-white">Remove Blog</a>
-                    <a [routerLink]="['/view-admin-blog']" class="btn btn-sm btn-primary">View Blog</a>
+                    <a [routerLink]="['/view-admin-blog',blog?._id]" class="btn btn-sm btn-primary">View Blog</a>
 
 
                   </div>

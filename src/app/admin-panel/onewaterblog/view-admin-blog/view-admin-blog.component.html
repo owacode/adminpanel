@@ -16,11 +16,11 @@
       <div class="col">
         <div class="card">
           <div class="card-header bg-transparent d-flex align-items-center">
-            <h3 class="mb-0">Blog Title</h3>
-           
+            <h3 class="mb-0">{{blog?.title}}</h3>
+
           </div>
-          <div class="card-body">
-              blog content
+          <div [innerHTML]="blog?.desc" class="card-body">
+
           </div>
         </div>
       </div>

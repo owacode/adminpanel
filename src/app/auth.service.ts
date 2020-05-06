@@ -32,4 +32,11 @@ export class AuthService {
       this.router.navigate(['/'])
     })
   }
+
+  logout() {
+    this.token=null;
+    this.isLoggedIn=false;
+    localStorage.removeItem("onewateradmintoken");
+    this.router.navigate(['/login'])
+  }
 }
