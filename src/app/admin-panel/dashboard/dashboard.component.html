@@ -4,9 +4,9 @@
         <div class="row justify-content-center align-items-center py-4">
           <div class="col-lg-6 col-7">
             <h1 class="h1 text-white text-center d-inline-block mb-0">Welcome to OneWater Academy Dashboard</h1>
-            
+
           </div>
-          
+
         </div>
         <!-- Card stats -->
         <div class="row">
@@ -17,7 +17,7 @@
                 <div class="row">
                   <div class="col-6">
                     <h5 class="card-title text-uppercase text-muted mb-0">blog requests</h5>
-                    <span class="h1 font-weight-bold mb-0">75</span>  
+                    <span class="h1 font-weight-bold mb-0">{{ blogs?.length }}</span>
                     <div class="mt-2">
                       <a href="#!" class="btn btn-sm btn-primary">See all</a>
                     </div>
@@ -27,14 +27,14 @@
                       <img src="assets/img/icons/blog.svg" alt="">
                     </div>
                   </div>
-                  
+
                 </div>
-               
-               
+
+
               </div>
             </div>
           </div>
-          
+
           <div class="col-xl-4 col-md-6">
             <div class="card card-stats">
               <!-- Card body -->
@@ -42,7 +42,7 @@
                 <div class="row">
                   <div class="col-6">
                     <h5 class="card-title text-uppercase text-muted mb-0">authors requests</h5>
-                    <span class="h1 font-weight-bold mb-0">25</span>
+                    <span class="h1 font-weight-bold mb-0">{{authors?.length}}</span>
                     <div class="mt-2">
                       <a href="#!" class="btn btn-sm btn-primary">See all</a>
                     </div>
@@ -53,7 +53,7 @@
                     </div>
                   </div>
                 </div>
-               
+
               </div>
             </div>
           </div>
@@ -65,7 +65,7 @@
                 <div class="row">
                   <div class="col-6">
                     <h5 class="card-title text-uppercase text-muted mb-0">videos requests</h5>
-                    <span class="h1 font-weight-bold mb-0">25</span>  
+                    <span class="h1 font-weight-bold mb-0">{{videos?.length}}</span>
                     <div class="mt-2">
                       <a href="#!" class="btn btn-sm btn-primary">See all</a>
                     </div>
@@ -75,10 +75,10 @@
                       <img src="assets/img/icons/video.svg" alt="">
                     </div>
                   </div>
-                  
+
                 </div>
-               
-               
+
+
               </div>
             </div>
           </div>
@@ -88,8 +88,8 @@
   </div>
   <!-- Page content -->
   <div class="container-fluid mt--6">
-   
-    
+
+
     <div class="row">
       <div class="col-xl-8">
         <div class="card">
@@ -203,78 +203,20 @@
           <div class="card-body">
             <!-- List group -->
             <ul class="list-group list-group-flush list my--3">
-              <li class="list-group-item px-0">
+              <li class="list-group-item px-0" *ngFor="let author of authors">
                 <div class="row align-items-center">
                   <div class="col-auto">
                     <!-- Avatar -->
                     <a href="#" class="avatar rounded-circle">
-                      <img alt="Image placeholder" src="../../assets/img/theme/team-1.jpg">
+                      <img alt="Image placeholder" [src]="author?.image">
                     </a>
                   </div>
                   <div class="col ml--2">
                     <h4 class="mb-0">
-                      <a href="#!">John Michael</a>
+                      <a href="#!">{{author?.name}}</a>
                     </h4>
-                   
-                    <small>12 March 2013</small>
-                  </div>
-                  <div class="col-auto">
-                    <button type="button" class="btn btn-sm btn-primary">View</button>
-                  </div>
-                </div>
-              </li>
-              <li class="list-group-item px-0">
-                <div class="row align-items-center">
-                  <div class="col-auto">
-                    <!-- Avatar -->
-                    <a href="#" class="avatar rounded-circle">
-                      <img alt="Image placeholder" src="../../assets/img/theme/team-2.jpg">
-                    </a>
-                  </div>
-                  <div class="col ml--2">
-                    <h4 class="mb-0">
-                      <a href="#!">Alex Smith</a>
-                    </h4>
-                   
-                    <small>12 March 2013</small>
-                  </div>
-                  <div class="col-auto">
-                    <button type="button" class="btn btn-sm btn-primary">View</button>
-                  </div>
-                </div>
-              </li>
-              <li class="list-group-item px-0">
-                <div class="row align-items-center">
-                  <div class="col-auto">
-                    <!-- Avatar -->
-                    <a href="#" class="avatar rounded-circle">
-                      <img alt="Image placeholder" src="../../assets/img/theme/team-3.jpg">
-                    </a>
-                  </div>
-                  <div class="col ml--2">
-                    <h4 class="mb-0">
-                      <a href="#!">Samantha Ivy</a>
-                    </h4>
-                    <small>12 March 2013</small>
-                  </div>
-                  <div class="col-auto">
-                    <button type="button" class="btn btn-sm btn-primary">View</button>
-                  </div>
-                </div>
-              </li>
-              <li class="list-group-item px-0">
-                <div class="row align-items-center">
-                  <div class="col-auto">
-                    <!-- Avatar -->
-                    <a href="#" class="avatar rounded-circle">
-                      <img alt="Image placeholder" src="../../assets/img/theme/team-4.jpg">
-                    </a>
-                  </div>
-                  <div class="col ml--2">
-                    <h4 class="mb-0">
-                      <a href="#!">John Michael</a>
-                    </h4>
-                    <small>12 March 2013</small>
+
+                    <small>{{author?.date_added | date: 'MMMM y,d'}}</small>
                   </div>
                   <div class="col-auto">
                     <button type="button" class="btn btn-sm btn-primary">View</button>
@@ -288,4 +230,3 @@
     </div>
   </div>
 
-  

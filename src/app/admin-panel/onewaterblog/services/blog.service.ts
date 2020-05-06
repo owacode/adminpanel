@@ -32,6 +32,14 @@ export class BlogService {
     return this.http.get<{status:any,msg:any,result:any}>('https://onewater-blogapi.herokuapp.com/singleappblog/'+blogid);
   }
 
+  getHomeBlogs(){
+    return this.http.get<{status:any,msg:any,result:any}>('https://onewater-blogapi.herokuapp.com/homeblog');
+  }
+
+  deleteHomeBlogs(id){
+    return this.http.delete<{status:any,msg:any,result:any}>('https://onewater-blogapi.herokuapp.com/home-blog/'+id);
+  }
+
   approve(blogid,mainid,category, subcategory){
     const id={
       mainid:mainid,
@@ -41,6 +49,14 @@ export class BlogService {
     }
     console.log('id details',id)
       this.http.post<{status:any,msg:any,result:any}>('https://onewater-blogapi.herokuapp.com/approve-blog',id)
+      .subscribe(result=> {
+        console.log(result)
+        alert(result.msg)
+      })
+  }
+
+  addToHomeBlog(data){
+      this.http.post<{status:any,msg:any,result:any}>('https://onewater-blogapi.herokuapp.com/homeblog',data)
       .subscribe(result=> {
         console.log(result)
         alert(result.msg)

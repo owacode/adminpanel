@@ -18,8 +18,7 @@ export class DrawingResponsesComponent implements OnInit {
     this.common.getDrawing()
     .subscribe(res=> {
       console.log(res)
-      this.drawing = res;
-
+      this.drawing = res.result;
       this.loader.hideLoader();
       if(!this.drawing.length) this.noContent = true;
     })

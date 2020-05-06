@@ -88,7 +88,12 @@ blogstoDisplay = [];
     if(!this.blogstoDisplay.length) this.noContent = true;
   }
 
-  moveToAdminBlogs(){}
+  moveToAdminBlog(i){
+    if(confirm("Add Blog to home")) {
+      console.log(this.blogstoDisplay[i]);
+      this.blogService.addToHomeBlog(this.blogstoDisplay[i]);
+    } else return;
+  }
 
   deleteApproveBlog(main_id,approved_id,author_id) {
     if(confirm("Delete This Blog")) {
