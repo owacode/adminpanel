@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthorService } from '../services/author.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { AuthorService } from '../services/author.service';
 })
 export class ViewAuthorComponent implements OnInit {
   public author;
-  constructor(public route: ActivatedRoute, public authorservice: AuthorService) { }
+  constructor(public route: ActivatedRoute, public authorservice: AuthorService, public router: Router) { }
 
   ngOnInit() {
     this.route.params.subscribe(result=> {
@@ -24,10 +24,12 @@ export class ViewAuthorComponent implements OnInit {
 
   approve(mainid, blogid){
     this.authorservice.approveAuthor(mainid, blogid);
+    this.router.navigate(['/authors']);
   }
 
   reject(mainid, blogid){
     this.authorservice.rejectAuthor(mainid, blogid);
+    this.router.navigate(['/authors']);
   }
 
 }

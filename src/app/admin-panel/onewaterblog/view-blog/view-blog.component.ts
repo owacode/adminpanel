@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BlogService } from '../services/blog.service';
 import { AuthorService } from '../services/author.service';
 
@@ -16,7 +16,7 @@ export class ViewBlogComponent implements OnInit {
   category=null;
   subcategory=null;
   showSubcatrgory;
-  constructor(public route:ActivatedRoute, public blogservice: BlogService, public authorservice:AuthorService) { }
+  constructor(public route:ActivatedRoute, public blogservice: BlogService, public authorservice:AuthorService,public router: Router) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(result=>{
@@ -47,6 +47,7 @@ export class ViewBlogComponent implements OnInit {
       this.category=null;
       this.subcategory=null;
       alert("Blog Approved");
+      this.router.navigate(['/blogs']);
     }
   }
 
@@ -55,6 +56,7 @@ export class ViewBlogComponent implements OnInit {
     console.log(blogid,mainid);
     this.blogservice.reject(blogid,mainid);
     alert("Blog Rejected");
+    this.router.navigate(['/blogs']);
     }
   }
 

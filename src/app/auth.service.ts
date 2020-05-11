@@ -18,7 +18,7 @@ export class AuthService {
       return;
     }
     this.isLoggedIn = true;
-    this.router.navigate(['/'])
+    // this.router.navigate(['/'])
   }
 
   login(data) {
