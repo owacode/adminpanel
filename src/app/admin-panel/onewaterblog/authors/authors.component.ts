@@ -101,6 +101,7 @@ deleteUnApprovedAuthor(id,mainid) {
     mainid:mainid
   }).subscribe(result=> {
     console.log(result)
+    alert ("Author Deleted")
   })
 }else return;
 }
@@ -112,6 +113,7 @@ deleteApprovedAuthor(id,mainid) {
     mainid:mainid
   }).subscribe(result=> {
     console.log(result)
+    alert ("Author Deleted")
   });
 }else return;
 }
