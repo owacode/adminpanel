@@ -14,23 +14,31 @@
   <div class="container-fluid mt--6">
     <div class="row justify-content-center">
       <div class="col">
-        <div class="card">
-          <div class="card-header bg-transparent d-flex align-items-center">
-            <h3 class="mb-0">{{blog?.title}}</h3>
-            <div *ngIf="blog?.status == 'pending'" class="text-right ml-auto">
-              <button type="button" class="btn btn-sm btn-primary btn-icon" data-toggle="modal" data-target="#approveForm" >
-                <span class="btn-inner--icon"><i class="fa fa-check" aria-hidden="true"></i>
-                </span>
-                <span class="btn-inner--text">Approve</span>
-              </button>
-              <button (click)="reject(blog.unapproved_id, blog._id)" type="button" class="btn btn-sm btn-danger btn-icon">
-                  <span class="btn-inner--icon"><i class="fa fa-trash" aria-hidden="true"></i></span>
-                  <span class="btn-inner--text">Reject</span>
-                </button>
-            </div>
+       
+        <div class="card" >
+          <div class="loader">
+            <img src="assets/img/icons/loader.webp" alt="">
+            <div class="text">Fetching blog...</div>
           </div>
-          <div class="card-body" [innerHTML]="blog?.desc"></div>
-        </div>
+          <div class="div" *ngIf="blog">
+            <div class="card-header bg-transparent d-flex align-items-center">
+              <h3 class="mb-0">{{blog?.title}}</h3>
+              <div *ngIf="blog?.status == 'pending'" class="text-right ml-auto">
+                <button type="button" class="btn btn-sm btn-primary btn-icon" data-toggle="modal" data-target="#approveForm" >
+                  <span class="btn-inner--icon"><i class="fa fa-check" aria-hidden="true"></i>
+                  </span>
+                  <span class="btn-inner--text">Approve</span>
+                </button>
+                <button (click)="reject(blog.unapproved_id, blog._id)" type="button" class="btn btn-sm btn-danger btn-icon">
+                    <span class="btn-inner--icon"><i class="fa fa-trash" aria-hidden="true"></i></span>
+                    <span class="btn-inner--text">Reject</span>
+                  </button>
+              </div>
+            </div>
+            <div class="card-body" [innerHTML]="blog?.desc"></div>
+          </div>
+          </div>
+         
       </div>
     </div>
   </div>

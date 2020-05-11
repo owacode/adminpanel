@@ -19,6 +19,11 @@
         <div class="col-xl-10 col-lg-10">
 
             <div class="card">
+              <div class="loader">
+                <img src="assets/img/icons/loader.webp" alt="">
+                <div class="text">Fetching instructor...</div>
+              </div>
+              <div *ngIf="instructor">
                 <div class="card-header">
                   <h2 class="h2 mb-0">Basic Details</h2>
                 </div>
@@ -76,8 +81,8 @@
                     </div>
 
                 </div>
+                </div>
               </div>
         </div>
       </div>
 
-    </div>

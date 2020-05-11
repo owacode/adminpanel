@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BlogService } from '../services/blog.service';
 import { AuthorService } from '../services/author.service';
+import { LoaderFunctions } from 'src/app/common/loader-functions';
 
 @Component({
   selector: 'app-view-blog',
@@ -16,9 +17,10 @@ export class ViewBlogComponent implements OnInit {
   category=null;
   subcategory=null;
   showSubcatrgory;
-  constructor(public route:ActivatedRoute, public blogservice: BlogService, public authorservice:AuthorService,public router: Router) { }
+  constructor(public route:ActivatedRoute, public blogservice: BlogService, public authorservice:AuthorService,public router: Router, public loader: LoaderFunctions) { }
 
   ngOnInit(): void {
+    this.loader.showLoader();
     this.route.params.subscribe(result=>{
       this.blogid=result.id
       console.log(this.blogid)
@@ -28,6 +30,7 @@ export class ViewBlogComponent implements OnInit {
         this.blog=result.result[0];
         this.getauthor(this.blog.author_id)
         console.log(this.blog);
+        this.loader.hideLoader();
       })
     })
   }

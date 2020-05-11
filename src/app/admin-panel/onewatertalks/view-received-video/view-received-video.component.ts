@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { CommonService } from '../common.service';
 import { ActivatedRoute } from '@angular/router';
+import { LoaderFunctions } from 'src/app/common/loader-functions';
 
 @Component({
   selector: 'app-view-received-video',
@@ -12,9 +13,10 @@ export class ViewReceivedVideoComponent implements OnInit {
 
   public video;
   safeSrc: SafeResourceUrl;
-  constructor(public route: ActivatedRoute, public common: CommonService, private sanitizer: DomSanitizer) { }
+  constructor(public route: ActivatedRoute, public common: CommonService, private sanitizer: DomSanitizer, public loader: LoaderFunctions) { }
 
   ngOnInit(): void {
+   this.loader.showLoader();
     this.route.params.subscribe(res => {
       this.common.getSingleAuthorVideos(res.id)
       .subscribe(res=> {
@@ -23,6 +25,7 @@ export class ViewReceivedVideoComponent implements OnInit {
         this.video.video_link=`https://www.youtube.com/watch/${link}`;
         this.safeSrc =  this.sanitizer.bypassSecurityTrustResourceUrl(this.video.video_link);
         console.log(this.video)
+        this.loader.hideLoader();
       })
     })
   }
