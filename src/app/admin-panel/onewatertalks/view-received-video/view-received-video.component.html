@@ -19,45 +19,41 @@
         <div class="col-xl-10 col-lg-10">
 
             <div class="card">
-
-                <div class="card-header d-flex align-items-center">
-                  <div class="d-flex align-items-center">
-
-                    <div class="mx-3">
-                      <h3 class="text-dark font-weight-600 text-md">{{video?.title}}</h3>
-                      <small class="d-block text-muted">Uploaded on: {{video?.date_added | date:'MMMM y,d'}}</small>
+              <div class="loader">
+                <img src="assets/img/icons/loader.webp" alt="">
+                <div class="text">Fetching video details...</div>
+              </div>
+              <div *ngIf="video">
+                <div>
+                  <div class="card-header d-flex align-items-center">
+                    <div class="d-flex align-items-center">
+  
+                      <div class="mx-3">
+                        <h3 class="text-dark font-weight-600 text-md">{{video?.title}}</h3>
+                        <small class="d-block text-muted">Uploaded on: {{video?.date_added | date:'MMMM y,d'}}</small>
+                      </div>
                     </div>
                   </div>
-                  <!-- <div class="text-right ml-auto">
-                    <button type="button" class="btn btn-sm btn-primary btn-icon" data-toggle="modal" data-target="#approveForm" >
-                      <span class="btn-inner--icon"><i class="fa fa-check" aria-hidden="true"></i>
-                      </span>
-                      <span class="btn-inner--text">Approve</span>
-                    </button>
-                    <button type="button" class="btn btn-sm btn-danger btn-icon">
-                        <span class="btn-inner--icon"><i class="fa fa-trash" aria-hidden="true"></i></span>
-                        <span class="btn-inner--text">Reject</span>
-                      </button>
-                  </div> -->
+                  <div class="card-body">
+                      <div class="row">
+  
+  
+                          <div class="col-md-3">
+                              <h4>URL</h4></div>
+                          <div class="col-md-9">
+                              <a href="{{video?.video_link}}" target="_blank">{{video?.video_link}}</a>
+                              <a href="{{video?.video_link}}" class="ml-2 btn btn-sm btn-primary" target="_blank">
+                              Watch</a>
+                          </div>
+  
+                      </div>
+  
+                      <hr>
+                      <h2 class="h2 mb-1">Video Description</h2>
+                      {{video?.video_link}}
+                  </div>
                 </div>
-                <div class="card-body">
-                    <div class="row">
-
-
-                        <div class="col-md-3">
-                            <h4>URL</h4></div>
-                        <div class="col-md-9">
-                            <a href="{{video?.video_link}}" target="_blank">{{video?.video_link}}</a>
-                            <a href="{{video?.video_link}}" class="ml-2 btn btn-sm btn-primary" target="_blank">
-                            Watch</a>
-                        </div>
-
-                    </div>
-
-                    <hr>
-                    <h2 class="h2 mb-1">Video Description</h2>
-                    {{video?.video_link}}
-                </div>
+                
               </div>
         </div>
       </div>
