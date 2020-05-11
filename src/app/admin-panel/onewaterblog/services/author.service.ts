@@ -59,6 +59,7 @@ export class AuthorService {
   }
 
   deleteApprovedAuthor(data){
+    console.log(data)
     return this.http.delete<{status:any,msg:any}>('https://onewater-blogapi.herokuapp.com/approved-author/',data);
   }
 
