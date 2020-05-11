@@ -79,26 +79,36 @@ export class AuthorsComponent implements OnInit {
 
 
   approve(mainid, blogid){
+    if(confirm("Are you sure you want approve this author ?")) {
     this.authorService.approveAuthor(mainid, blogid);
     //alert("Author has been approved");
   }
+  else return
+}
 
   reject(mainid, blogid){
+    if(confirm("Are you sure you want reject this author ?")) {
     this.authorService.rejectAuthor(mainid, blogid);
     //alert("Author has been rejected");
   }
+  else return
+}
 
-  deleteUnApprovedAuthor(id,mainid) {
-    this.authorService.deleteUnApprovedAuthor({
-      id:id,
-      mainid:mainid
-    });
-  }
+deleteUnApprovedAuthor(id,mainid) {
+  if(confirm("Are you sure you want delete this author ?")) {
+  this.authorService.deleteUnApprovedAuthor({
+    id:id,
+    mainid:mainid
+  });
+}else return;
+}
 
-  deleteApprovedAuthor(id,mainid) {
-    this.authorService.deleteApprovedAuthor({
-      id:id,
-      mainid:mainid
-    });
-  }
+deleteApprovedAuthor(id,mainid) {
+  if(confirm("Are you sure you want delete this author ?")) {
+  this.authorService.deleteApprovedAuthor({
+    id:id,
+    mainid:mainid
+  });
+}else return;
+}
 }
