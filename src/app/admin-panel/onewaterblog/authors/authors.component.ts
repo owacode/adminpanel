@@ -37,7 +37,7 @@ export class AuthorsComponent implements OnInit {
     else
     this.authorsToDisplay = this.authors;
       //change ui
-      
+
   }
   showPendingAuthors(){
     //reset ui and blog array
@@ -74,10 +74,10 @@ export class AuthorsComponent implements OnInit {
     //change ui
     this.loader.hideLoader();
     if(!this.authorsToDisplay.length) this.noContent = true;
-    
+
   }
 
- 
+
   approve(mainid, blogid){
     this.authorService.approveAuthor(mainid, blogid);
     //alert("Author has been approved");
@@ -86,5 +86,19 @@ export class AuthorsComponent implements OnInit {
   reject(mainid, blogid){
     this.authorService.rejectAuthor(mainid, blogid);
     //alert("Author has been rejected");
+  }
+
+  deleteUnApprovedAuthor(id,mainid) {
+    this.authorService.deleteUnApprovedAuthor({
+      id:id,
+      mainid:mainid
+    });
+  }
+
+  deleteApprovedAuthor(id,mainid) {
+    this.authorService.deleteApprovedAuthor({
+      id:id,
+      mainid:mainid
+    });
   }
 }

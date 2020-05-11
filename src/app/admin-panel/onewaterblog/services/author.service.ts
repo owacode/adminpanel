@@ -57,4 +57,12 @@ export class AuthorService {
       alert("Author Rejected Successfully")
     })
   }
+
+  deleteApprovedAuthor(data){
+    return this.http.delete<{status:any,msg:any}>('https://onewater-blogapi.herokuapp.com/approved-author/',data);
+  }
+
+  deleteUnApprovedAuthor(data){
+    return this.http.delete<{status:any,msg:any}>('https://onewater-blogapi.herokuapp.com/unapproved-author/',data);
+  }
 }

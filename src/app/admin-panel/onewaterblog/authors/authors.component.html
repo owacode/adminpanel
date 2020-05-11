@@ -100,6 +100,8 @@
                   </td>
                   <td class="d-flex justify-content-between align-content-center">
                     <a [routerLink]="['/view-author',author?._id]" class="btn btn-sm btn-primary mt-2 px-3 py-2">View Author</a>
+                    <a style="color: white;" *ngIf="author?.status == 'pending'" (click)="deleteUnApprovedAuthor(author?.unapproved_id,author?._id)" class="btn btn-sm btn-primary mt-2 px-3 py-2">Delete Author</a>
+                    <a style="color: white;" *ngIf="author?.status == 'approved'" (click)="deleteApprovedAuthor(author?.approved_id,author?._id)" class="btn btn-sm btn-primary mt-2 px-3 py-2">Delete Author</a>
                     <div class="dropdown" *ngIf="author?.status == 'pending'">
                       <a class="btn btn-sm btn-icon-only text-light" title="More Options" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-ellipsis-v"></i>
