@@ -54,6 +54,10 @@
 
 
 //common styles
+
+.show-menu{
+  transform: translateX(0) !important;
+}
 .loader,.no-content{
     height: 300px;
     display: none;
@@ -73,6 +77,25 @@
 }
 .no-content{
     display: flex;
+}
+.option-overlay{
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.548);
+  height: 100vh;
+  width: 100%;
+  display: none;
+  z-index: 900;
+  animation: fade_in 0.5s ease-in forwards;
+}
+
+@keyframes fade_in {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+  
 }
 form .error{
     font-size: 0.8rem;

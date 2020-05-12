@@ -76,6 +76,10 @@ const routes: Routes = [
       {
         path:'payments',
         loadChildren: () => import('./other-components/payments/payments.module').then(m => m.PaymentsModule)
+      },
+      {
+        path:'ruc-contact-responses',
+        loadChildren: () => import('./other-components/ruc-contact-responses/ruc-contact-responses.module').then(m => m.RucContactResponsesModule)
       }
     ]
   }
