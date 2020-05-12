@@ -99,7 +99,10 @@ deleteUnApprovedAuthor(id,mainid) {
   this.authorService.deleteUnApprovedAuthor({
     id:id,
     mainid:mainid
-  });
+  }).subscribe(result=> {
+    console.log(result)
+    alert ("Author Deleted")
+  })
 }else return;
 }
 
@@ -108,6 +111,9 @@ deleteApprovedAuthor(id,mainid) {
   this.authorService.deleteApprovedAuthor({
     id:id,
     mainid:mainid
+  }).subscribe(result=> {
+    console.log(result)
+    alert ("Author Deleted")
   });
 }else return;
 }
