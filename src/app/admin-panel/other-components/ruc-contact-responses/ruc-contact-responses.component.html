@@ -41,21 +41,19 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <tr *ngFor="let contact of contacts">
                     <td class="table-user">
-                      <b>name</b>
+                      <b>{{ contact?.name }}</b>
                     </td>
                     <td class="table-user">
-                      <b>email</b>
+                      <b>{{ contact?.email }}</b>
                     </td>
                     <td>
-                        <span class="text-dark">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum, dolores.</span>
+                        <span class="text-dark">{{ contact?.subject }}</span>
                     </td>
                     <td>
                         <p class="msg">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro recusandae dignissimos deleniti molestias architecto quibusdam eaque, cupiditate enim dolores excepturi?
-                            <br>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat similique odio quas sint architecto qui est quidem nulla voluptatum. Deserunt voluptatibus id facere tempore dolorum amet quasi harum ea accusamus consequuntur voluptatum, repellat voluptates aperiam quae a, dolor quidem provident eum porro laudantium, fugit totam? Expedita dignissimos commodi modi id!
+                          {{ contact?.message }}
                         </p>
                     </td>
                   </tr>
