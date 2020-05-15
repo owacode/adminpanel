@@ -60,10 +60,11 @@ export class AuthorService {
 
   deleteApprovedAuthor(data){
     console.log(data)
-    return this.http.delete<{status:any,msg:any}>('https://onewater-blogapi.herokuapp.com/approved-author/',data);
+    return this.http.post<{status:any,msg:any}>('https://onewater-blogapi.herokuapp.com/delete-approved-author',data);
   }
 
   deleteUnApprovedAuthor(data){
-    return this.http.delete<{status:any,msg:any}>('https://onewater-blogapi.herokuapp.com/unapproved-author/',data);
+    console.log(data)
+    return this.http.post<{status:any,msg:any}>('https://onewater-blogapi.herokuapp.com/delete-unapproved-author',data);
   }
 }

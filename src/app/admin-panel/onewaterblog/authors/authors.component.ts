@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthorService } from '../services/author.service';
 import { map, filter,catchError } from 'rxjs/operators';
 import { LoaderFunctions } from 'src/app/common/loader-functions';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-authors',
   templateUrl: './authors.component.html',
@@ -12,7 +13,7 @@ export class AuthorsComponent implements OnInit {
   authorsType;
   noContent;
   authors = [];
-  constructor(public authorService: AuthorService, public loader: LoaderFunctions) { }
+  constructor(public authorService: AuthorService, public loader: LoaderFunctions, public router: Router) { }
 
   ngOnInit(): void {
     this.showAllAuthors();
@@ -95,25 +96,31 @@ export class AuthorsComponent implements OnInit {
 }
 
 deleteUnApprovedAuthor(id,mainid) {
-  if(confirm("Are you sure you want delete this author ?")) {
-  this.authorService.deleteUnApprovedAuthor({
+  console.log(id,mainid,'unapp')
+  const data = {
     id:id,
     mainid:mainid
-  }).subscribe(result=> {
+  }
+  if(confirm("Are you sure you want delete this author ?")) {
+  this.authorService.deleteUnApprovedAuthor(data).subscribe(result=> {
     console.log(result)
     alert ("Author Deleted")
+    this.router.navigate(['/authors'])
   })
 }else return;
 }
 
 deleteApprovedAuthor(id,mainid) {
-  if(confirm("Are you sure you want delete this author ?")) {
-  this.authorService.deleteApprovedAuthor({
+  console.log(id,mainid,'app')
+  const data = {
     id:id,
     mainid:mainid
-  }).subscribe(result=> {
+  }
+  if(confirm("Are you sure you want delete this author ?")) {
+  this.authorService.deleteApprovedAuthor(data).subscribe(result=> {
     console.log(result)
     alert ("Author Deleted")
+    this.router.navigate(['/authors'])
   });
 }else return;
 }
