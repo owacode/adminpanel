@@ -1,12 +1,13 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn:'root'
 })
 
 export class AuthorService {
-  constructor(public http: HttpClient){}
+  constructor(public http: HttpClient, public router: Router){}
 
   getNotApprovedAuthor(){
     return this.http.get<{status:any,msg:any,result:any}>('https://onewater-blogapi.herokuapp.com/notauthor');
@@ -42,6 +43,7 @@ export class AuthorService {
       console.log(result.msg);
       console.log(result);
       alert("Author Approved Successfully")
+      this.router.navigate(['/authors']);
     })
   }
 
@@ -55,6 +57,7 @@ export class AuthorService {
       console.log(result.msg);
       console.log(result);
       alert("Author Rejected Successfully")
+      this.router.navigate(['/authors']);
     })
   }
 
