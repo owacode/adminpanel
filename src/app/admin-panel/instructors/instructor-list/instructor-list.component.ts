@@ -13,13 +13,25 @@ export class InstructorListComponent implements OnInit {
   constructor(public common: CommonService,public loader : LoaderFunctions) { }
 
   ngOnInit(): void {
+    this.getInstructors();
+  }
+
+  deleteInstructor(id) {
+    console.log(id)
+    this.common.deleteRegisteredInstructor(id)
+    .subscribe(res => {
+      console.log(res)
+      this.getInstructors();
+    })
+  }
+
+  getInstructors() {
     this.noContent = false;
     this.loader.showLoader();
     this.common.getRegisteredInstructor()
     .subscribe(result=> {
       console.log(result);
       this.instructors = result.result;
-
       this.loader.hideLoader();
       if(!this.instructors.length) this.noContent = true;
     })

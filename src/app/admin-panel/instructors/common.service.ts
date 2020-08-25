@@ -18,4 +18,12 @@ export class CommonService {
   getDrawing() {
     return this.http.get<{status:any, msg:any, result:any}>('https://onewater-instructor-api.herokuapp.com/register-drawing');
   }
+
+  deleteDrawing(id) {
+    return this.http.delete<{status:any, msg:any, result:any}>('https://onewater-instructor-api.herokuapp.com/registered-drawing/'+id);
+  }
+
+  deleteRegisteredInstructor(id) {
+    return this.http.delete<{status:any, msg:any, result:any}>('https://onewater-instructor-api.herokuapp.com/registered-instructor/'+id);
+  }
 }

@@ -14,6 +14,18 @@ export class SubscribersListComponent implements OnInit {
   constructor(public http:HttpClient,public loader: LoaderFunctions) { }
 
   ngOnInit() {
+    this.getSubscriber();
+  }
+ 
+  delete(id) {
+    this.http.delete<{status:string, msg:string, result:any}>('https://onewater-auth.herokuapp.com/candidate-subscribed/'+id)
+    .subscribe(res => {
+      console.log(res);
+      this.getSubscriber();
+    })
+  }
+
+  getSubscriber() {
     this.noContent = false;
     this.loader.showLoader();
     this.http.get<{status:string, msg:string, result:any}>('https://onewater-auth.herokuapp.com/suscribed')

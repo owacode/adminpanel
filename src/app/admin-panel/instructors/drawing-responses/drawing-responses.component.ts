@@ -13,6 +13,19 @@ export class DrawingResponsesComponent implements OnInit {
   constructor(public common: CommonService,public loader: LoaderFunctions) { }
 
   ngOnInit(): void {
+    this.getDrawing();
+  }
+
+  delete(id) {
+    console.log(id)
+    this.common.deleteDrawing(id)
+    .subscribe(res => {
+      console.log(res)
+      this.getDrawing();
+    })
+  }
+
+  getDrawing() {
     this.noContent = false;
     this.loader.showLoader();
     this.common.getDrawing()

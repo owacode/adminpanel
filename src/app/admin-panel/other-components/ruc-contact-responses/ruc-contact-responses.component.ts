@@ -14,6 +14,19 @@ export class RucContactResponsesComponent implements OnInit {
   constructor(public http:HttpClient,public loader: LoaderFunctions) { }
 
   ngOnInit() {
+    this.getContact();
+  }
+
+  delete(id) {
+    console.log(id)
+    this.http.delete<{status:string, msg:string, result:any}>('https://onewater-auth.herokuapp.com/ruc-contact/'+id)
+    .subscribe(res => {
+      console.log(res);
+      this.getContact();
+    })
+  }
+
+  getContact() {
     this.noContent = false;
     this.loader.showLoader();
     this.http.get<{status:string, msg:string, result:any}>('https://onewater-auth.herokuapp.com/ruc-contact')

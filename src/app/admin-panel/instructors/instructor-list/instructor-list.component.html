@@ -69,6 +69,7 @@
                   </td>
                   <td class="d-flex justify-content-around align-content-center">
                     <a [routerLink]="['/view-instructor',inst._id]" class="btn btn-sm btn-primary mt-2 px-3 py-2">View Course</a>
+                    <a (click)="deleteInstructor(inst._id)" class="btn btn-sm btn-danger mt-2 px-3 py-2">Delete</a>
                   </td>
                 </tr>
               </tbody>

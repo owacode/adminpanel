@@ -38,6 +38,7 @@
                     <th>Email</th>
                     <th>Date</th>
                     <th>Organisation</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -54,6 +55,10 @@
 
                     <td>
                       <a lass="font-weight-bold">{{item?.organization}}</a>
+                    </td>
+
+                    <td>
+                      <button (click)="delete(item._id)" class="btn btn-sm btn-danger mt-2 px-3 py-2">Delete</button>
                     </td>
 
                   </tr>

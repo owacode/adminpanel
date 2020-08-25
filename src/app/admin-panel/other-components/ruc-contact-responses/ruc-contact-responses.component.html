@@ -38,6 +38,7 @@
                     <th>Email</th>
                     <th>Subject</th>
                     <th>Message</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -55,6 +56,9 @@
                         <p class="msg">
                           {{ contact?.message }}
                         </p>
+                    </td>
+                    <td>
+                      <button (click)="delete(contact._id)" class="btn btn-sm btn-danger mt-2 px-3 py-2">Delete</button>
                     </td>
                   </tr>
 
